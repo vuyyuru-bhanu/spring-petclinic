@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-pet
+  labels:
+    app: spring-pet
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-pet
+  template:
+    metadata:
+      labels:
+        app: spring-pet
+    spec:
+      containers:
+      - name: spring-pet
+        image: bhanu3333/kube:replaceImageTag
+        ports:
+        - containerPort: 8080
