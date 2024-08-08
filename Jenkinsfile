@@ -1,9 +1,9 @@
 pipeline {
-  agent { docker {
-      image 'bhanu3333/test:4'
-      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
-    }
-  }
+  agent any //{ docker {
+     // image 'bhanu3333/test:4'
+    //  args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+   // }
+ // }
    tools {
         jdk 'jdk21'
         maven 'mvn'
@@ -37,9 +37,9 @@ pipeline {
     stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Petclinc \
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=sPetclinc \
                     -Dsonar.java.binaries=. \
-                    -Dsonar.projectKey=Petclinic '''
+                    -Dsonar.projectKey=sPetclinic '''
                 }
             }
         }
