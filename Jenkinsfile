@@ -81,7 +81,7 @@ pipeline {
     }
     stage('Update Deployment File') {
         environment {
-            GIT_REPO_NAME = "jpetstore-6"
+            GIT_REPO_NAME = "spring-petclinic"
             GIT_USER_NAME = "vuyyuru-bhanu"
             DOCKER_IMAGE = "bhanu3333/springpetclinic:${BUILD_NUMBER}"
         }
