@@ -54,7 +54,7 @@ pipeline {
 
         stage ('Build war file'){
             steps{
-                sh 'mvn package'
+                sh 'mvn clean install '
             }
         }
 
