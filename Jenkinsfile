@@ -34,7 +34,20 @@ pipeline {
 
   
 
-    stage("Sonarqube Analysis "){
+    
+        stage ('Check stye validayion'){
+            steps{
+                sh 'mvn checkstyle:checkstyle'
+            }
+        }
+        
+
+        stage ('Build war file'){
+            steps{
+                sh 'mvn clean install -X'
+            }
+        }
+        stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonar-server') {
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=sPetclinc \
@@ -49,18 +62,6 @@ pipeline {
                   waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
                 }
            }
-        }
-        stage ('Check stye validayion'){
-            steps{
-                sh 'mvn checkstyle:checkstyle'
-            }
-        }
-        
-
-        stage ('Build war file'){
-            steps{
-                sh 'mvn clean install -X'
-            }
         }
 
         stage("OWASP Dependency Check"){
