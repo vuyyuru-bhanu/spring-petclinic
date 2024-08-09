@@ -95,7 +95,7 @@ pipeline {
                     sed -i "s|image: .*|image: ${DOCKER_IMAGE}|" manifests/deployements.yml
                     git add manifests/deployements.yml
                     git commit -m "Update deployment image to version of springpetclinic to  ${BUILD_NUMBER}"
-                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:test
+                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                 '''
             }
         }
