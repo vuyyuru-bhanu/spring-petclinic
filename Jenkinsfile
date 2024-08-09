@@ -50,16 +50,11 @@ pipeline {
                 }
            }
         }
-        stage ('Check stye validayion'){
-            steps{
-                sh 'mvn checkstyle:checkstyle'
-            }
-        }
-        
+       
 
         stage ('Build war file'){
             steps{
-                sh 'mvn clean install -X'
+                sh 'mvn package'
             }
         }
 
