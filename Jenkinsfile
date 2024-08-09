@@ -14,7 +14,7 @@ pipeline {
   stages {
     stage('Install trivy') {
             steps {
-                sh 'apt update && sudo apt install openjdk-17-jdk -y'
+                sh 'apt update && apt install openjdk-17-jdk -y'
                 sh 'wget https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.deb'
                 sh 'dpkg -i trivy_0.18.3_Linux-64bit.deb'
 
