@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: spring-pet
-        image: bhanu3333/kube:replaceImageTag
+        image: bhanu3333/springpetclinic:9
         ports:
         - containerPort: 8080
